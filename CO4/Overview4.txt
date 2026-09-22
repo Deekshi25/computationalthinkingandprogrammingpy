@@ -1,0 +1,70 @@
+Algorithm: Async Web Crawler
+----------------------------
+1. Create a queue of URLs.
+2. Insert initial URL.
+3. Create a set of visited URLs.
+4. Create multiple asynchronous workers.
+5. Each worker:
+      a. Gets a URL from the queue.
+      b. Downloads the page asynchronously.
+      c. Processes the response.
+      d. Extracts new URLs.
+      e. Adds new URLs to the queue.
+6. Continue until the queue is empty.
+7. Stop all workers.
+
+
+Algorithm: Back Pressure Algorithm
+---------------------------------
+1. Create a bounded queue.
+2. Producer generates data.
+3. Producer attempts to insert data.
+4. If queue has space:
+       insert data.
+5. If queue is full:
+       producer waits.
+6. Consumer processes data.
+7. Consumer removes data from queue.
+8. Producer continues.
+
+
+Algorithm: Concurrency Program
+------------------------------
+1. Create executor.
+2. Submit tasks.
+3. Receive Future objects.
+4. Continue doing other work.
+5. Check or retrieve Future results.
+6. Process results.
+7. Shutdown executor.
+
+
+Algorithm: Random Generator
+---------------------------
+1. Define an async generator.
+2. Generate or obtain one data item.
+3. Use await for asynchronous operations.
+4. Yield the item.
+5. Consumer receives the item.
+6. Generate the next item.
+7. Repeat until data ends.
+
+
+Decision Algorithm: Concurrency Model
+-------------------------------------
+                Start
+                  │
+                  ↓
+        Is the workload CPU-bound?
+             /          \
+           Yes           No
+            ↓             ↓
+       Processes      Is it I/O-bound?
+                         /      \
+                       Yes       No
+                        ↓         ↓
+              Is API async?   Threads/
+                 /    \        evaluate
+               Yes     No
+                ↓       ↓
+             asyncio  Threads
