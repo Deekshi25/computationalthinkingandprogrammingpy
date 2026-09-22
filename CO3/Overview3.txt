@@ -1,0 +1,301 @@
+1. Banking System — PEP 484 Type Hints
+Concept
+
+PEP 484 Type Hints / Static Type Checking
+
+The function specifies the expected type of each parameter and its return type.
+
+Algorithm
+Start.
+Define a transaction function.
+Accept account_id as a string.
+Accept amount as a float.
+Accept transaction_type as a string.
+Check whether the amount is greater than 0.
+If yes, display transaction details and return True.
+Otherwise, return False.
+Stop.
+Pseudocode
+START
+
+DEFINE process_transaction(account_id: string,
+                           amount: float,
+                           transaction_type: string)
+
+    IF amount > 0 THEN
+        DISPLAY transaction type
+        DISPLAY account ID
+        DISPLAY amount
+        RETURN True
+    ELSE
+        RETURN False
+    END IF
+
+END FUNCTION
+
+result ← process_transaction("ACC101", 5000.0, "Deposit")
+
+DISPLAY result
+
+STOP
+Simple way to remember
+Input → Type Check → Process Transaction → Return Boolean
+
+
+2. Customer Contact — PEP 604 Union Type
+Concept
+
+Union Type / PEP 604
+
+A variable can contain more than one possible type.
+
+str | int
+Algorithm
+Start.
+Define a Customer class.
+Accept customer name as str.
+Accept contact as either str or int.
+Store name and contact.
+Display customer information.
+Create customers using email and mobile number.
+Stop.
+Pseudocode
+START
+
+DEFINE Customer class
+
+    DEFINE constructor(name, contact)
+
+        STORE name
+        STORE contact
+
+    END CONSTRUCTOR
+
+    DEFINE display()
+
+        DISPLAY name
+        DISPLAY contact
+
+    END FUNCTION
+
+END CLASS
+
+
+CREATE customer1
+    name = "Rahul"
+    contact = "rahul@gmail.com"
+
+CREATE customer2
+    name = "Priya"
+    contact = 9876543210
+
+DISPLAY customer1
+DISPLAY customer2
+
+STOP
+Simple way to remember
+Contact → String OR Integer → Store → Display
+
+Exam line:
+
+PEP 604 allows multiple possible types using the | operator.
+
+3. Enterprise Repository — Generic Types
+Concept
+
+Generics + Reusability + Abstraction
+
+One repository class can work with different object types.
+
+Repository[Customer]
+Repository[Product]
+Repository[Employee]
+Algorithm
+Start.
+Define a generic type T.
+Create a generic Repository class.
+Create an empty list to store objects.
+Define add() to insert an object.
+Define get_all() to return all objects.
+Create Customer, Product and Employee classes.
+Create repositories for each type.
+Add corresponding objects.
+Display stored objects.
+Stop.
+Pseudocode
+START
+
+DEFINE generic type T
+
+DEFINE Repository[T]
+
+    INITIALIZE empty list
+
+    FUNCTION add(item: T)
+        ADD item to list
+    END FUNCTION
+
+    FUNCTION get_all()
+        RETURN list
+    END FUNCTION
+
+END CLASS
+
+
+CREATE Customer Repository
+CREATE Product Repository
+CREATE Employee Repository
+
+ADD Customer to Customer Repository
+ADD Product to Product Repository
+ADD Employee to Employee Repository
+
+DISPLAY Customer Repository
+DISPLAY Product Repository
+DISPLAY Employee Repository
+
+STOP
+Simple way to remember
+Generic Repository
+       ↓
+   One Logic
+       ↓
+ ┌─────┼─────┐
+Customer Product Employee
+
+Exam line:
+
+Generics allow one class to work with multiple data types while avoiding duplicate code.
+
+4. Product Engineering — PEP 695 Generic Data Store
+Concept
+
+PEP 695 Generic Syntax
+
+PEP 695 provides a cleaner syntax:
+
+class DataStore[T]:
+Algorithm
+Start.
+Define generic class DataStore[T].
+Create an empty list of type T.
+Define add() to insert an item.
+Define get_all() to return stored items.
+Create DataStore[int].
+Add integer values.
+Display integer values.
+Create DataStore[str].
+Add string values.
+Display string values.
+Stop.
+Pseudocode
+START
+
+DEFINE generic class DataStore[T]
+
+    INITIALIZE empty data list
+
+    FUNCTION add(item: T)
+        ADD item to data list
+    END FUNCTION
+
+    FUNCTION get_all()
+        RETURN data list
+    END FUNCTION
+
+END CLASS
+
+
+CREATE DataStore[int]
+
+ADD 10
+ADD 20
+ADD 30
+
+DISPLAY integer data
+
+
+CREATE DataStore[string]
+
+ADD "Rahul"
+ADD "Priya"
+
+DISPLAY string data
+
+STOP
+Simple way to remember
+DataStore[T]
+     ↓
+ ┌───┴────┐
+ int     str
+ ↓        ↓
+10,20,30  Rahul,Priya
+
+Exam line:
+
+PEP 695 allows type parameters to be declared directly in the class definition using class DataStore[T].
+
+Important: PEP 695 syntax requires Python 3.12+.
+
+5. Inventory System — Dataclass
+Concept
+
+Dataclass
+
+A dataclass is useful when a class mainly stores data.
+
+It automatically generates methods such as:
+
+__init__()
+__repr__()
+__eq__()
+Algorithm
+Start.
+Import dataclass.
+Define InventoryItem using @dataclass.
+Define product ID.
+Define product name.
+Define quantity.
+Define price.
+Create an inventory object.
+Display the object.
+Update quantity.
+Display updated object.
+Stop.
+Pseudocode
+START
+
+DEFINE InventoryItem as DATACLASS
+
+    product_id : integer
+    product_name : string
+    quantity : integer
+    price : float
+
+END CLASS
+
+
+CREATE InventoryItem
+    ID = 101
+    Name = "Laptop"
+    Quantity = 10
+    Price = 55000.0
+
+DISPLAY inventory item
+
+UPDATE quantity to 15
+
+DISPLAY updated inventory item
+
+STOP
+Simple way to remember
+Product Data
+     ↓
+ ┌──────────────┐
+ │ ID           │
+ │ Name         │
+ │ Quantity     │
+ │ Price        │
+ └──────────────┘
+       ↓
+  @dataclass
