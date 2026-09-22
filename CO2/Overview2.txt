@@ -1,0 +1,29 @@
+Steps:
+-----
+Sort transactions by customer because groupby() groups consecutive elements.
+Use groupby() to create a group for each customer.
+Extract products from each group.
+Use combinations(products, 2) to generate pairs of products.
+Process each combination immediately instead of storing all combinations in a list.
+
+
+Pseudo Code:
+------------
+
+START
+   ↓
+Receive transaction stream
+   ↓
+Sort transactions by customer
+   ↓
+groupby(customer)
+   ↓
+For each customer
+   ↓
+Get their products
+   ↓
+Generate combinations of 2 products
+   ↓
+Process/output each combination lazily
+   ↓
+END
