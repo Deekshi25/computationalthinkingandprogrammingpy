@@ -61,7 +61,8 @@ print("No of Comparisons:", comparisons)
 
 4. Sample Input
 [40, 45, 39, 38, 43, 41, 35, 42, 44, 37]
-6. Sample Output
+
+5. Sample Output
 Original Array: [40, 45, 39, 38, 43, 41, 35, 42, 44, 37]
 Sorted Array: [35, 37, 38, 39, 40, 41, 42, 43, 44, 45]
 No of Comparisons: 21
